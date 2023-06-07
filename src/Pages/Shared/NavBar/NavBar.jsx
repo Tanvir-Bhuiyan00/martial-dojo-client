@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 
 const NavBar = () => {
+  
+
   const navOptions = (
     <>
       <li>
@@ -39,22 +42,26 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm font-body font-medium dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 rounded-box w-52"
           >
             {navOptions}
+            <ToggleThemeBtn></ToggleThemeBtn>
           </ul>
         </div>
         <a className="btn btn-ghost font-display text-primary text-3xl normal-case ">
-          Martial<span className="text-neutral ml-0">Dojo</span>
+          Martial<span className="text-secondary ml-0">Dojo</span>
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu tracking-wider font-medium menu-horizontal font-body px-1">
+        <ul className="menu tracking-wider font-semibold menu-horizontal font-body px-1">
           {navOptions}
+          <ToggleThemeBtn></ToggleThemeBtn>
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0 font-body tracking-wider">Login</button>
+        <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0 font-body tracking-wider">
+          Login
+        </button>
       </div>
     </div>
   );
