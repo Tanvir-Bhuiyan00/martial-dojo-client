@@ -1,6 +1,11 @@
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import slider1 from "../../../assets/video/slider1.mp4";
+import slider2 from "../../../assets/video/slider2.mp4";
+import slider3 from "../../../assets/video/slider3.mp4";
+import slider4 from "../../../assets/video/slider4.mp4";
+import slider5 from "../../../assets/video/slider5.mp4";
+import slider6 from "../../../assets/video/slider6.mp4";
 import BannerTemplate from "./BannerTemplate";
 const Banner = () => {
   const [sliderRef] = useKeenSlider(
@@ -40,15 +45,25 @@ const Banner = () => {
   );
   return (
     <>
-      <div ref={sliderRef} className="keen-slider max-w-screen-xl mx-auto">
+      <div ref={sliderRef} className="keen-slider ">
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider1}></BannerTemplate>
+          <BannerTemplate sliderVid={slider1} sliderTitle="Learn Kungfu"></BannerTemplate>
         </div>
-        <div className="keen-slider__slide">2</div>
-        <div className="keen-slider__slide">3</div>
-        <div className="keen-slider__slide">4</div>
-        <div className="keen-slider__slide">5</div>
-        <div className="keen-slider__slide">6</div>
+        <div className="keen-slider__slide">
+          <BannerTemplate sliderVid={slider2} sliderTitle="Learn Boxing"></BannerTemplate>
+        </div>
+        <div className="keen-slider__slide">
+          <BannerTemplate sliderVid={slider3} sliderTitle="Learn Karate"></BannerTemplate>
+        </div>
+        <div className="keen-slider__slide">
+          <BannerTemplate sliderVid={slider4} sliderTitle="Learn Fencing"></BannerTemplate>
+        </div>
+        <div className="keen-slider__slide">
+          <BannerTemplate sliderVid={slider5} sliderTitle="Learn Taekwondo"></BannerTemplate>
+        </div>
+        <div className="keen-slider__slide">
+          <BannerTemplate sliderVid={slider6} sliderTitle="Learn mexican wrestling"></BannerTemplate>
+        </div>
       </div>
     </>
   );

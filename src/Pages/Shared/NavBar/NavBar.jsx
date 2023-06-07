@@ -21,7 +21,8 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar max-w-screen-xl mx-auto bg-base-100 my-5">
+   
+      <div className="navbar py-3 md:px-10 fixed z-10 bg-base-100 bg-opacity-20 text-white ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +43,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-dark text-white bg-opacity-30 rounded-box w-52"
           >
             {navOptions}
             <ToggleThemeBtn></ToggleThemeBtn>
