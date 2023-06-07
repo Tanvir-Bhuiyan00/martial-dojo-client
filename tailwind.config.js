@@ -2,10 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        display: ["Playfair Display", "serif"],
+        body: ["Roboto", "sans-serif"],
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: [],
+    themes: ["garden", "synthwave"],
   },
 };
