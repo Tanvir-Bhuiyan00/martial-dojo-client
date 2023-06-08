@@ -45,24 +45,24 @@ const Banner = () => {
   );
   return (
     <>
-      <div ref={sliderRef} className="keen-slider ">
+      <div ref={sliderRef} className="keen-slider w-full">
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider1} sliderTitle="Learn Kungfu"></BannerTemplate>
+          <BannerTemplate sliderVid={slider1} sliderTitle="Learn Kungfu" sliderText="Learning Kung Fu requires discipline, strength, and balance, as methods integrate the body and mind, resulting in personal progress."></BannerTemplate>
         </div>
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider2} sliderTitle="Learn Boxing"></BannerTemplate>
+          <BannerTemplate sliderVid={slider2} sliderTitle="Learn Boxing" sliderText="Learning Boxing involves building mental focus and discipline while also developing strength, speed, and defensive abilities, resulting in improved physical condition and self-confidence. "></BannerTemplate>
         </div>
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider3} sliderTitle="Learn Karate"></BannerTemplate>
+          <BannerTemplate sliderVid={slider3} sliderTitle="Learn Karate" sliderText="Learning Karate requires developing discipline, self-defense skills, and mental fortitude, as well as encouraging physical fitness and personal growth."></BannerTemplate>
         </div>
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider4} sliderTitle="Learn Fencing"></BannerTemplate>
+          <BannerTemplate sliderVid={slider4} sliderTitle="Learn Fencing" sliderText="Fencing requires acquiring precise footwork, quick reactions, and strategic thinking, as well as combining athleticism with tactical expertise to participate in an exciting and exquisite combat sport."></BannerTemplate>
         </div>
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider5} sliderTitle="Learn Taekwondo"></BannerTemplate>
+          <BannerTemplate sliderVid={slider5} sliderTitle="Learn Taekwondo" sliderText="Taekwondo teaches strong kicks, rapid strikes, and efficient self-defense skills while also instilling discipline, self-confidence, and mental focus."></BannerTemplate>
         </div>
         <div className="keen-slider__slide">
-          <BannerTemplate sliderVid={slider6} sliderTitle="Learn mexican wrestling"></BannerTemplate>
+          <BannerTemplate sliderVid={slider6} sliderTitle="Learn mexican wrestling" sliderText="Mastering lucha libre, or Mexican wrestling, entails mastering acrobatic movements, high-flying acrobatics, and theatrical theatrics to create an exhilarating and captivating display. "></BannerTemplate>
         </div>
       </div>
     </>

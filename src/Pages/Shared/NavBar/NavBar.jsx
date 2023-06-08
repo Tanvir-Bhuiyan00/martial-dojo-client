@@ -43,7 +43,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-dark text-white bg-opacity-30 rounded-box w-52"
+            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 text-white bg-opacity-20 rounded-box w-52"
           >
             {navOptions}
             <ToggleThemeBtn></ToggleThemeBtn>
