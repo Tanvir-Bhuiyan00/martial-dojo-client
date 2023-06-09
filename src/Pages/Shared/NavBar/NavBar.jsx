@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 
 const NavBar = () => {
-  
-
   const navOptions = (
     <>
       <li>
@@ -21,8 +19,7 @@ const NavBar = () => {
     </>
   );
   return (
-   
-      <div className="navbar py-3 md:px-10 fixed z-10 bg-base-100 bg-opacity-20 text-white ">
+    <div className="navbar py-3 md:px-10 fixed z-10 bg-base-100 bg-opacity-20 text-white ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,7 +40,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 text-white bg-opacity-20 rounded-box w-52"
+            className="menu menu-sm font-body font-semibold dropdown-content mt-3 p-2 tracking-wider shadow bg-base-100 text-base-content bg-opacity-20 rounded-box w-52"
           >
             {navOptions}
             <ToggleThemeBtn></ToggleThemeBtn>
@@ -54,15 +51,17 @@ const NavBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu tracking-wider font-semibold menu-horizontal font-body px-1">
+        <ul className="menu tracking-wider text-base-content font-semibold menu-horizontal font-body px-1">
           {navOptions}
           <ToggleThemeBtn></ToggleThemeBtn>
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0 font-body tracking-wider">
-          Login
-        </button>
+        <Link to="login">
+          <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0 font-body tracking-wider">
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );
