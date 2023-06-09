@@ -1,10 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
+import useAuth from "../../../hooks/useAuth";
 
 const NavBar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const { user, logOut } = useAuth();
 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const navOptions = (
     <>
       <li>
@@ -16,9 +23,11 @@ const NavBar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
+      {user?.email && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -64,11 +73,27 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="login">
-          <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0 font-body tracking-wider">
-            Login
-          </button>
-        </Link>
+        {user?.email ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 btn btn-accent  border-0  tracking-wider"
+            >
+              Logout
+            </button>
+            <div className="avatar ml-3">
+              <div title={user?.displayName} className="w-12 rounded-full">
+                <img src={user?.photoURL} className="image-full " />
+              </div>
+            </div>
+          </>
+        ) : (
+          <Link to="login">
+            <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 btn btn-accent  border-0  tracking-wider">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
