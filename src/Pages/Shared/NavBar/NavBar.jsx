@@ -62,7 +62,7 @@ const NavBar = () => {
             <ToggleThemeBtn></ToggleThemeBtn>
           </ul>
         </div>
-        <a className="btn btn-ghost font-display text-primary text-3xl normal-case ">
+        <a className="btn btn-ghost font-display text-primary text-xl md:text-3xl normal-case ">
           Martial<span className="text-secondary ml-0">Dojo</span>
         </a>
       </div>
@@ -75,21 +75,21 @@ const NavBar = () => {
       <div className="navbar-end">
         {user?.email ? (
           <>
-            <button
-              onClick={handleLogOut}
-              className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 btn btn-accent  border-0  tracking-wider"
-            >
-              Logout
-            </button>
-            <div className="avatar ml-3">
-              <div title={user?.displayName} className="w-12 rounded-full">
+            <div className="avatar mr-3">
+              <div title={user?.displayName} className="w-8 md:w-10 rounded-full">
                 <img src={user?.photoURL} className="image-full " />
               </div>
             </div>
+            <button
+              onClick={handleLogOut}
+              className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200  bg-accent  border-0  tracking-wider"
+            >
+              Logout
+            </button>
           </>
         ) : (
           <Link to="login">
-            <button className="py-2 px-5 rounded-xl text-sm font-semibold text-base-200 btn btn-accent  border-0  tracking-wider">
+            <button className="py-1 md:py-2 px-3 md:px-5 rounded-xl text-sm font-semibold text-base-200 bg-accent  border-0  tracking-wider">
               Login
             </button>
           </Link>
