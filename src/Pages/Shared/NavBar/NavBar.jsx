@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 
 const NavBar = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   const navOptions = (
     <>
       <li>
@@ -19,7 +22,11 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar py-3 md:px-10 fixed z-10 bg-base-100 bg-opacity-20 text-white ">
+    <div
+      className={`navbar py-3 md:px-10 ${
+        isHomePage ? "fixed" : ""
+      } z-10 bg-base-100 bg-opacity-20 text-white`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import martialImg from "/logo.png";
+import martialImg from "../../assets/photo/logo2.png";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,12 +24,12 @@ const Login = () => {
       </Helmet>
 
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:gap-10 lg:flex-row-reverse">
-          <div style={{width: "400px"}}>
+        <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
+          <div className=" md:w-[400px]">
             <div className="text-center mb-10">
-              <h1 className="text-5xl font-bold font-display">Login now!</h1>
+              <h1 className="text-5xl font-bold font-display mt-10 md:mt-0">Login now!</h1>
             </div>
-            <img className="w-64 mx-auto" src={martialImg} alt="" />
+            <img className="w-52 md:w-64 mx-auto" src={martialImg} alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit()} className="card-body">
