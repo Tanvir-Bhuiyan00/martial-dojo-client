@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import martialImg from "../../assets/photo/logo2.png";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {signIn} = useAuth()
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
