@@ -1,24 +1,32 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
-import { FaFirstOrderAlt, FaHome, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
+import {
+  FaFirstOrderAlt,
+  FaHome,
+  FaUsers,
+  FaUtensils,
+  FaWallet,
+} from "react-icons/fa";
 import { FcManager } from "react-icons/fc";
 import { SiGoogleclassroom } from "react-icons/si";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
+  const { user } = useAuth();
   const [isInstructor] = useInstructor();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  
+
   return (
     <div className="flex h-screen">
       {/* Mobile Sidebar Toggle */}
-      <div className="z-50 inset-0 flex items-center justify-end md:hidden">
+      <div className="z-50 inset-0 flex  justify-end md:hidden">
         <button
           onClick={toggleSidebar}
           className="p-4 focus:outline-none bg-primary"
@@ -51,13 +59,43 @@ const Dashboard = () => {
 
       {/* Sidebar */}
       <aside
-        className={`bg-neutral text-white w-80 flex flex-col ${
+        className={`bg-primary-focus text-base-100 w-80 flex flex-col ${
           isSidebarOpen ? "block" : "hidden"
         } md:block`}
       >
         {/* Sidebar Content */}
-        <div className="p-4">
-          <ul className="menu p-4 w-80">
+        <div className="p-4 ">
+          <ul className="menu p-4 w-72">
+            <div className="flex justify-center mt-5">
+              <div>
+                <div className="avatar flex justify-center">
+                  <div
+                    title={user?.email}
+                    className="w-14 md:w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-8"
+                  >
+                    <img src={user?.photoURL} className="image-full " />
+                  </div>
+                </div>
+                <div className="my-5">
+                  <p className="text-center font-semibold">{user?.displayName}</p>
+                  <p
+                    className={`font-bold p-1 mt-2 rounded-ss-2xl ${
+                      isAdmin
+                        ? "bg-primary text-neutral-focus"
+                        : isInstructor
+                        ? "bg-accent text-neutral"
+                        : "bg-secondary text-neutral"
+                    } flex justify-center`}
+                  >
+                    {isAdmin
+                      ? "Admin"
+                      : isInstructor
+                      ? "Instructor"
+                      : "Student"}
+                  </p>
+                </div>
+              </div>
+            </div>
             {isAdmin && (
               <>
                 <li>
@@ -87,6 +125,11 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/addclass">
                     <FaUtensils /> Add A Class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/myclasses">
+                    <SiGoogleclassroom /> My Classes
                   </NavLink>
                 </li>
               </>

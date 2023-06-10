@@ -16,6 +16,29 @@ const NavBar = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
+  const renderDashboardLink = () => {
+    if (isAdmin) {
+      return (
+        <li>
+          <Link to="/dashboard/adminhome">Dashboard</Link>
+        </li>
+      );
+    } else if (isInstructor) {
+      return (
+        <li>
+          <Link to="/dashboard/instructorhome">Dashboard</Link>
+        </li>
+      );
+    } else {
+      return (
+        <li>
+          <Link to="/dashboard/studenthome">Dashboard</Link>
+        </li>
+      );
+    }
+  };
+
   const navOptions = (
     <>
       <li>
@@ -27,19 +50,7 @@ const NavBar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
-      {isAdmin ? (
-        <li>
-          <Link to="/dashboard/adminhome">Dashboard</Link>
-        </li>
-      ) : isInstructor ? (
-        <li>
-          <Link to="/dashboard/instructorhome">Dashboard</Link>
-        </li>
-      ) : (
-        <li>
-          <Link to="/dashboard/studenthome">Dashboard</Link>
-        </li>
-      )}
+      {user?.email && renderDashboardLink()}
     </>
   );
   return (

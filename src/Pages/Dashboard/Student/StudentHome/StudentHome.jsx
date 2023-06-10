@@ -2,7 +2,7 @@
 const StudentHome = () => {
   return (
     <div>
-      <h2>Hello i'm a student</h2>
+      <h2>hello world</h2>
     </div>
   );
 };

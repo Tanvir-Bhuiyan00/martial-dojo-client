@@ -3,11 +3,14 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import Dashboard from "../Layout/Dashboard";
 import AdminRoute from "./AdminRoute";
-import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
+import InstructorRoute from "./InstructorRoute";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
+import StudentHome from "../Pages/Dashboard/Student/StudentHome/StudentHome";
+import InstructorHome from "../Pages/Dashboard/Instructor/InstructorHome/InstructorHome";
+import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +46,23 @@ export const router = createBrowserRouter([
           <AdminRoute>
             <AdminHome></AdminHome>
           </AdminRoute>
+        ),
+      },
+      // instructor route
+      {
+        path: "instructorhome",
+        element: (
+          <InstructorRoute>
+            <InstructorHome></InstructorHome>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "addclass",
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
         ),
       },
       // student route
