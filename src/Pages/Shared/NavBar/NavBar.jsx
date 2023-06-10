@@ -1,11 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogOut = () => {
     logOut()
@@ -23,9 +27,17 @@ const NavBar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
-      {user?.email && (
+      {isAdmin ? (
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard/adminhome">Dashboard</Link>
+        </li>
+      ) : isInstructor ? (
+        <li>
+          <Link to="/dashboard/instructorhome">Dashboard</Link>
+        </li>
+      ) : (
+        <li>
+          <Link to="/dashboard/studenthome">Dashboard</Link>
         </li>
       )}
     </>
