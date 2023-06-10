@@ -62,9 +62,12 @@ const NavBar = () => {
             <ToggleThemeBtn></ToggleThemeBtn>
           </ul>
         </div>
-        <a className="btn btn-ghost font-display text-primary text-xl md:text-3xl normal-case ">
+        <Link
+          to="/"
+          className="btn btn-ghost font-display text-primary text-xl md:text-3xl normal-case "
+        >
           Martial<span className="text-secondary ml-0">Dojo</span>
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu tracking-wider text-base-content font-semibold menu-horizontal font-body px-1">
@@ -76,7 +79,10 @@ const NavBar = () => {
         {user?.email ? (
           <>
             <div className="avatar mr-3">
-              <div title={user?.displayName} className="w-8 md:w-10 rounded-full">
+              <div
+                title={user?.displayName}
+                className="w-8 md:w-10 rounded-full"
+              >
                 <img src={user?.photoURL} className="image-full " />
               </div>
             </div>
