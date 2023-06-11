@@ -11,6 +11,8 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import StudentHome from "../Pages/Dashboard/Student/StudentHome/StudentHome";
 import InstructorHome from "../Pages/Dashboard/Instructor/InstructorHome/InstructorHome";
 import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,22 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageclasses",
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageusers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
           </AdminRoute>
         ),
       },

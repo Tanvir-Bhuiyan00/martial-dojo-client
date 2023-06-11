@@ -39,6 +39,7 @@ const AddClass = () => {
             price: parseFloat(price),
             image: imgURL,
             status: "pending",
+            feedback: "",
           };
           console.log(newClass);
           axiosSecure.post("/classes", newClass).then((data) => {
@@ -59,7 +60,7 @@ const AddClass = () => {
   return (
     <>
       <Helmet>
-        <title>Martial Dojo | Dashboard | Add A Class</title>
+        <title>Martial Dojo | Add A Class</title>
       </Helmet>
       <div className="w-full md:mx-32 mt-5 md:py-5">
         <h1 className="text-5xl text-center font-display font-semibold mb-5">
