@@ -21,7 +21,7 @@ const ManageUsers = () => {
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: `${user.name} is an Admin Now!`,
             showConfirmButton: false,
@@ -31,7 +31,7 @@ const ManageUsers = () => {
       });
   };
   const handleMakeInstructor = (user) => {
-    fetch(`${import.meta.env.VITE_api_url}/users/admin/${user._id}`, {
+    fetch(`${import.meta.env.VITE_api_url}/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -40,9 +40,9 @@ const ManageUsers = () => {
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
-            title: `${user.name} is an Admin Now!`,
+            title: `${user.name} is an Instructor Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -50,7 +50,26 @@ const ManageUsers = () => {
       });
   };
 
-  const handleDelete = (user) => {};
+  const handleDelete = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#1A103C",
+      cancelButtonColor: "#e25ab2",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "User has been deleted.", "success");
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="w-full">
       <Helmet>
@@ -79,7 +98,6 @@ const ManageUsers = () => {
                 <td>{user.email}</td>
                 <td className="flex justify-around gap-5 items-center">
                   <span className="">
-
                     {user.role === "admin" ? (
                       "admin"
                     ) : (
@@ -107,7 +125,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
-                    className="btn btn-ghost bg-error  text-base-100"
+                    className="btn btn-ghost bg-error rounded-se-2xl text-base-100"
                   >
                     <FaTrashAlt></FaTrashAlt>
                   </button>
