@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen">
       {/* Mobile Sidebar Toggle */}
-      <div className="z-50 inset-0 flex  justify-end md:hidden">
+      <div className=" mb-10 md:hidden">
         <button
           onClick={toggleSidebar}
           className="p-4 focus:outline-none bg-primary"
