@@ -17,6 +17,9 @@ import MyClasses from "../Pages/Dashboard/Instructor/MyClasses/MyClasses";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import SelectedClasses from "../Pages/Dashboard/Student/SelectedClasses/SelectedClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -37,11 +40,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "instructors",
-        element: <Instructors></Instructors>
+        element: <Instructors></Instructors>,
       },
       {
-        path:"classes",
-        element: <Classes></Classes>
+        path: "classes",
+        element: <Classes></Classes>,
       },
     ],
   },
@@ -106,12 +109,40 @@ export const router = createBrowserRouter([
       // student route
       {
         path: "studenthome",
-        element: <PrivateRoute><StudentHome></StudentHome></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <StudentHome></StudentHome>
+          </PrivateRoute>
+        ),
       },
       {
         path: "selectedClasses",
-        element: <PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "enrolledclasses",
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </PrivateRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "errorpage",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);

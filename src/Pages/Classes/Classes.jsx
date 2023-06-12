@@ -3,13 +3,16 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import useSelectedClasses from "../../hooks/useSelectedClasses";
 
 const Classes = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { data: classes = [], refetch } = useQuery({
+  const location = useLocation();
+  const [, refetch] = useSelectedClasses();
+  const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
       const res = await axiosSecure.get("/classes/approved");
@@ -20,21 +23,22 @@ const Classes = () => {
 
   const handleEnroll = (classes) => {
     if (user && user.email) {
-      const courseEnroll = {
-        courseId: classes._id,
-        photo: classes.image,
-        className: classes.name,
+      const classEnroll = {
+        _id: classes._id,
+        image: classes.image,
+        name: classes.name,
         instructorName: classes.instructorName,
-        seats: classes.availableSeats,
+        availableSeats: classes.availableSeats,
         price: classes.price,
-        email: classes.instructorEmail,
+        instructorEmail: classes.instructorEmail,
+        email: user.email,
       };
       fetch(`${import.meta.env.VITE_api_url}/selectedClasses`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(courseEnroll),
+        body: JSON.stringify(classEnroll),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -95,7 +99,7 @@ const Classes = () => {
                 </div>
                 <div className="card-actions mt-3">
                   <button
-                    onClick={() => handleEnroll(classes)}
+                    onClick={() => handleEnroll(allClass)}
                     className="btn btn-primary"
                   >
                     Enroll Now
