@@ -22,7 +22,6 @@ const MyClasses = () => {
         });
     }
   }, [user]);
-  console.log(myClasses);
   return (
     <>
       <Helmet>
