@@ -15,28 +15,28 @@ const EnrolledClasses = () => {
       });
   }, []);
   return (
-    <div className="w-2/3 mx-auto mt-10">
-      <h2 className="text-center font-bold text-4xl mb-5">
+    <div className="w-full mx-16 mt-10">
+      <h2 className=" text-center font-display font-bold text-4xl mb-10">
         My Enrolled Courses
       </h2>
-      <table className="">
+      <table className="w-full">
         <thead>
-          <tr className=" text-white uppercase text-center">
+          <tr className="  uppercase text-center">
             <th className="py-3 px-6">#</th>
-            <th className="py-3 px-6">Course Name</th>
+            <th className="py-3 px-5">Course Name</th>
             <th className="py-3 px-6">Price</th>
             <th className="py-3 px-6">Transaction ID</th>
           </tr>
         </thead>
-        <tbody className="text-white font-light">
+        <tbody className="">
           {enrolledClasses.map((course, index) => (
             <tr
               key={course.transactionId}
               className="border-b border-gray-200 py-10"
             >
               <td className="py-3 px-6 text-left ">{index + 1}</td>
-              <td className="py-3 px-6 text-left ">{course.courseName}</td>
-              <td className="py-3 px-6 text-left ">{course.price}</td>
+              <td className="py-3 px-6 text-left ">{course.name}</td>
+              <td className="py-3 px-6 text-left ">${course.price}</td>
               <td className="py-3 px-6 text-left">{course.transactionId}</td>
             </tr>
           ))}

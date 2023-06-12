@@ -13,12 +13,15 @@ const Checkout = ({ cart, price }) => {
   const { user } = useAuth();
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  console.log(cart)
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      setClientSecret(res.data.clientSecret);
-    });
-  });
+    if(price){
+      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+    }
+  },[price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +66,7 @@ const Checkout = ({ cart, price }) => {
         price,
         quantity: cart.length,
         course: cart.map((course) => course._id),
-        courseName: cart.map((course) => course.className),
+        name: cart.map((course) => course.name),
       };
       axiosSecure.post("/payments", payment).then((res) => {
         if (res.data.insertedId) {

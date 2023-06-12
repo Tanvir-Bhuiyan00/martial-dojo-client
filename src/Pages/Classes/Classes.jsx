@@ -28,7 +28,7 @@ const Classes = () => {
         image: classes.image,
         name: classes.name,
         instructorName: classes.instructorName,
-        availableSeats: classes.availableSeats,
+        availableSeats: classes.availableSeats ,
         price: classes.price,
         instructorEmail: classes.instructorEmail,
         email: user.email,
