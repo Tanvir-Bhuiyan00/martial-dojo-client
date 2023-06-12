@@ -19,7 +19,6 @@ const ManageClasses = () => {
       return res.data;
     },
   });
-  console.log(classes);
 
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState("");

@@ -28,7 +28,11 @@ const Register = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email };
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photoURL: data.photoURL,
+          };
           fetch(`${import.meta.env.VITE_api_url}/users`, {
             method: "POST",
             headers: {
