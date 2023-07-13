@@ -19,7 +19,7 @@ const Classes = () => {
       return res.data;
     },
   });
-  console.log(classes);
+  
 
   const handleEnroll = (classes) => {
     if (user && user.email) {
