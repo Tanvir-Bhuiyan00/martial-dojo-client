@@ -4,14 +4,11 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import Heading from "../../../components/Heading/Heading";
-import useAuth from "../../../hooks/useAuth";
 
 const BestClasses = () => {
-  const { loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const controls = useAnimation();
   const { status, data: classes = [] } = useQuery({
-    enabled: !loading,
     queryKey: ["classes"],
     queryFn: async () => {
       const res = await axiosSecure.get("/api/classes/approved/dsc");
@@ -60,10 +57,7 @@ const BestClasses = () => {
                 } w-full rounded-lg`}
               >
                 <h2 className="card-title text-primary">{card.name}</h2>
-                <p className="flex items-center gap-1">
-                  
-                  {card.instructorName}
-                </p>
+                <p className="flex items-center gap-1">{card.instructorName}</p>
                 <p>
                   <b>Price: </b> ${card.price}
                 </p>
